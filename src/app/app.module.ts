@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { AppRoutes } from './app.routes';
+import { RouterModule } from '@angular/router';
+import { createCustomTranslateLoader } from './customs/translate-loader';
 
 
 import { AppComponent } from './app.component';
@@ -10,7 +15,18 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createCustomTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
+    RouterModule.forRoot(AppRoutes, {
+      useHash: true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
