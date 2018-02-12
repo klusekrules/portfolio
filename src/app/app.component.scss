@@ -1,0 +1,21 @@
+.yellow {
+  background-color: yellow;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.col-10 {
+  flex-grow: 1;
+  transition: all 900ms ease;
+}
+
+.col-1 {
+  flex-shrink: 1;
+  transition: all 900ms ease;
+}

@@ -6,10 +6,11 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.pug',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Portfolio';
+  selected = 1;
 
   constructor(
     private TranslateService: TranslateService,
@@ -25,9 +26,11 @@ export class AppComponent {
       TranslateService.use(langCode);
     }
 
-    TranslateService.get('AFH - Correspondence Registry')
+    TranslateService.get(this.title)
       .subscribe((res: string) => Title.setTitle(res));
   }
+
+  select = id => this.selected = id;
 
   private determinePreferredLanguage = () => {
     const nav: any = window.navigator;
